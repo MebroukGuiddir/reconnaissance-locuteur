@@ -21,6 +21,8 @@ cat $path | tr \\11 @ | (
   while IFS=$'@' read -r -a row
 
 	do
+    if test -f "$target/WAV/${row[1]}.wav";
+    then
                 # skip lines with empty label
                 if [[  "${row[6]}" != "" ]];
             		then
@@ -54,5 +56,6 @@ cat $path | tr \\11 @ | (
             				 fi
             			 fi
             		fi
+    fi
 	done
 )
