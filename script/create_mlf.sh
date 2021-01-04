@@ -20,7 +20,7 @@ mkdir -p "$target/lab"
 
 echo -e "#!MLF!#" >> "$target/lab/labels.mlf"
 
-cat $path | tr \\11 @ | (
+sed 1,1d $path | tr \\11 @ | (
   while IFS=$'@' read -r -a row
 
 	do      
