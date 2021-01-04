@@ -1,7 +1,5 @@
 #!/bin/bash
-user="mguiddir"
-src="/scratch/I322/DATA/clips"
-target="/scratch/$user/I322"
+
 
 source conf.shlib; # load the config library functions
 #load config
@@ -27,8 +25,8 @@ cat $path | tr \\11 @ | (
                 if [[  "${row[6]}" != "" ]];
             		then
             			 echo "Working on : "
-                                 echo " -file : $target/WAV/${row[1]}.wav" 
-                                 echo " -label : ${row[6]}               " 
+                                 echo " -file : $target/WAV/${row[1]}.wav"
+                                 echo " -label : ${row[6]}               "
             			 if [[ ${row[6]} == "male" ]];
                                      then
                                          echo " -cpt : $cpt_m"
@@ -44,7 +42,7 @@ cat $path | tr \\11 @ | (
 
             			 elif [[ ${row[6]} == "female" ]];
             			 then
-					 echo " -cpt : $cpt_f"	
+					 echo " -cpt : $cpt_f"
             				 if [ $cpt_f -eq 3 ]
             				 then
 

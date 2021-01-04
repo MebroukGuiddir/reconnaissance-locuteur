@@ -2,3 +2,4 @@ DATA/
 !DATA/files.tsv
 PARAMS/
 HTK/
+script/config.cfg
