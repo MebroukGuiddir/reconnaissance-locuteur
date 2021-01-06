@@ -4,7 +4,8 @@
 source conf.shlib; # load the config library functions
 #load config
 user="$(config_get user)"
-src=="$(config_get src)/DATA/clips"
+src="$(config_get src)/DATA/clips"
+
 target="$(config_get target)/DATA"
 
 
@@ -13,8 +14,10 @@ target="$(config_get target)/DATA"
 path="$target/files.tsv"
 cpt_m=0
 cpt_f=0
-mkdir  "$target/TEST"
-mkdir  "$target/TRAIN"
+mkdir -p  "$target/TEST/MALE"
+mkdir -p "$target/TRAIN/MALE"
+mkdir -p  "$target/TEST/FEMALE"
+mkdir -p "$target/TRAIN/FEMALE"
 
 
 cat $path | tr \\11 @ | (
@@ -35,10 +38,10 @@ cat $path | tr \\11 @ | (
 		    				 if [ $cpt_m -eq 3 ]
 		    				 then
 
-		    				   ln -s "$target/WAV/${row[1]}.wav" "$target/TEST"
+		    				   ln -s "$target/WAV/${row[1]}.wav" "$target/TEST/MALE"
 		    				   cpt_m=0
 		    				 else
-		    				   ln -s "$target/WAV/${row[1]}.wav" "$target/TRAIN"
+		    				   ln -s "$target/WAV/${row[1]}.wav" "$target/TRAIN/MALE"
 		    				   cpt_m=$((cpt_m+1))
 		    				 fi
 
@@ -48,10 +51,10 @@ cat $path | tr \\11 @ | (
 		    				 if [ $cpt_f -eq 3 ]
 		    				 then
 
-		    				   ln -s "$target/WAV/${row[1]}.wav" "$target/TEST"
+		    				   ln -s "$target/WAV/${row[1]}.wav" "$target/TEST/FEMALE"
 		    				   cpt_f=0
 		    				 else
-		    				   ln -s "$target/WAV/${row[1]}.wav" "$target/TRAIN"
+		    				   ln -s "$target/WAV/${row[1]}.wav" "$target/TRAIN/FEMALE"
 		    				   cpt_f=$((cpt_f+1))
 		    				 fi
 		    			 fi

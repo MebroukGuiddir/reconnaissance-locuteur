@@ -1,4 +1,4 @@
 user=user
-source=pathtodatasource
+src=pathtodatasource
 target=targetpath
 

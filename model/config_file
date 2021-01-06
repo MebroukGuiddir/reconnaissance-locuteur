@@ -1,0 +1,21 @@
+SOURCEFORMAT =  WAV   # type des fichiers en entrée
+SOURCERATE   = 208    # echantillonage 100 * 208 (ns)= 1/48khz
+
+TARGETKIND   = MFCC_0_Z     # exemple des paramètres que l'on veut extraire
+TARGETRATE   = 100000   # un vecteur est calcule toutes les 10ms
+
+WINDOWSIZE   = 320000   # taille de la fenetre d'analyse
+NUMCHANS     = 24       # nombre de filtres
+
+NUMCEPS      = 12       # nombre de parametres cepstraux
+CEPLIFTER    = 0        # coefficient de liftrage cepstral
+
+USEHAMMING   = T        # on utilise une fenetre de Hamming
+PREEMCOEF    = 0.97     # le coefficient de pre-accentuation
+
+ENORMALISE   = F        # on normalise ou pas l'energie
+
+SAVECOMPRESSED = F
+SAVEWITHCRC    = F
+NATURALWRITEORDER = T  # pour ecrire en little endian
+NATURALREADORDER  = T  # pour lire en little endian
