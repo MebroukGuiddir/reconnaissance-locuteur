@@ -4,14 +4,13 @@
 source conf.shlib; # load the config library functions
 #load config
 user="$(config_get user)"
-src="$(config_get src)/DATA/clips"
+src="$(config_get src)"
 
 target="$(config_get target)/DATA"
 
 
 #separate the dataset files into two parts TEST and TRAIN using symbolic links
 
-path="$target/files.tsv"
 cpt_m=0
 cpt_f=0
 mkdir -p  "$target/TEST/MALE"
@@ -20,14 +19,14 @@ mkdir -p  "$target/TEST/FEMALE"
 mkdir -p "$target/TRAIN/FEMALE"
 
 
-cat $path | tr \\11 @ | (
+cat "$src/DATA/files.tsv" | tr \\11 @ | (
   while IFS=$'@' read -r -a row
 
 	do
-	    if test -f "$target/WAV/${row[1]}.wav";
+	    if [[ -f "$target/WAV/${row[1]}.wav" ]]
 	    then
 		        # skip lines with empty label
-		        if [[  "${row[6]}" != "" ]];
+		        if [[  "${row[6]}" != "" ]]
 		    		then
 		    			 echo "Working on : "
 		                         echo " -file : $target/WAV/${row[1]}.wav"
